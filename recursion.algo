@@ -1,0 +1,15 @@
+FUNCTION isPalindrome(word: STRING) RETURNS BOOLEAN
+    // Stop condition: an empty word or a word containing a single character is a palindrome
+    IF LENGTH(word) <= 1 THEN
+        RETURN TRUE
+    END IF
+
+    // Compare the characters located at the ends of the word
+    IF FIRST_CHAR(word) = LAST_CHAR(word) THEN
+        // If equality, test the rest of the word (excluding the first and last characters)
+        RETURN isPalindrome(SUBSTRING(word, 2, LENGTH(word) - 2))
+    ELSE
+        // If difference, the word is not a palindrome
+        RETURN FALSE
+    END IF
+END FUNCTION
